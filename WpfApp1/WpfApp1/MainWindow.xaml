@@ -1,0 +1,74 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="900" Background="WhiteSmoke">
+    <Grid >
+        <Viewport3D Grid.Row="0" ClipToBounds="True" MouseLeftButtonDown="viewport1_MouseLeftButtonDown" Name="viewport1"
+                    MouseLeftButtonUp="viewport1_MouseLeftButtonUp" MouseMove="viewport1_MouseMove"
+                    MouseWheel="viewport1_MouseWheel"   MouseDown="viewport1_MouseDown" MouseUp="viewport1_MouseUp" MouseRightButtonDown="viewport1_MouseRightButtonDown" MouseRightButtonUp="viewport1_MouseRightButtonUp">
+            <Viewport3D.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.354"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="3.456"/>
+                </TransformGroup>
+            </Viewport3D.RenderTransform>
+            <Viewport3D.Camera>
+                <PerspectiveCamera x:Name="cam" Position="25,55,80" LookDirection="0,-35,-40"  UpDirection="0,1,0"/>
+            </Viewport3D.Camera>
+            <Viewport3D.Children>
+                <ModelVisual3D>
+                    <ModelVisual3D.Content>
+                        <DirectionalLight Color="White" Direction="-10,-220,-50" />
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+
+                <ModelVisual3D x:Name="Model">
+                    <ModelVisual3D.Content>
+                        <Model3DGroup>
+                            <GeometryModel3D>
+                                <GeometryModel3D.Material>
+                                    <DiffuseMaterial>
+                                        <DiffuseMaterial.Brush>
+                                            <ImageBrush ImageSource="Image/map.jpg" />
+                                        </DiffuseMaterial.Brush>
+                                    </DiffuseMaterial>
+                                </GeometryModel3D.Material>
+                                <GeometryModel3D.Geometry>
+                                    <MeshGeometry3D Positions="0,0,0  47,0,0  0,0,31  47,0,31"
+                                TextureCoordinates="0,0 1,0 0,1 1,1"
+                                TriangleIndices="0 3 1 0 2 3"/>
+                                </GeometryModel3D.Geometry>
+                            </GeometryModel3D>
+                        </Model3DGroup>
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+            </Viewport3D.Children>
+        </Viewport3D>
+        <Button Content="Load Button" HorizontalAlignment="Center" Height="57" VerticalAlignment="Top" Width="309" Click="Button_Click"/>
+        <StackPanel  Height="54" Margin="0,66,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Horizontal" Width="787">
+            <RadioButton Content="Switch change color" x:Name="ChangeColorSwitch"  Height="24"   Width="134" Checked="ChangeColorSwitch_Checked"/>
+            <RadioButton Content="Cancel switch" x:Name="CancelClick" Height="18" Width="98" RenderTransformOrigin="0.256,-0.276" Click="CancelClick_Click" />
+            <RadioButton Content="Change line color" x:Name="changeLineC" Height="18"  Width="152" Checked="changeLineC_Checked" />
+            <RadioButton Content="Cancel change line color" x:Name="cancelLine"  Height="21"   Width="163" Click="cancelLine_Click"/>
+            <RadioButton Content="Hide line" x:Name="hideLine" Height="19"   Width="106" Checked="hideLine_Checked" RenderTransformOrigin="-1.467,-1.682"/>
+            <RadioButton Content="Show line" x:Name="showLine"   Height="14"   Width="105" RenderTransformOrigin="0.255,0.269" Checked="showLine_Checked"/>
+
+        </StackPanel>
+        <StackPanel Margin="0,120,0,545" HorizontalAlignment="Center" VerticalAlignment="Top" Width="157" >
+            <Label Content="Dodatni zadatak 4" FontSize="17" Height="32"   />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center" Margin="0,153,0,556" Width="698" >
+            <RadioButton Content="Hide lines (R from 0 to 1)" x:Name="R1Hide"  Height="27"  Width="169" Checked="R1Hide_Checked"/>
+            <RadioButton Content="Hide lines (R from 1 to 2)" x:Name="R2Hide"  Height="29"  Width="178" Checked="R2Hide_Checked"/>
+            <RadioButton Content="Hide lines(R greater than 2)" x:Name="R3Hide"  Height="21"   Width="172" Checked="R3Hide_Checked"/>
+            <RadioButton Content="Cancel hide lines"  x:Name="CancelHide" Height="19"   Width="118" Checked="CancelHide_Checked"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
